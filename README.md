@@ -1,6 +1,6 @@
 # 自動網路認證腳本
 
-這是一個使用 Selenium 自動進行網路認證的 Python 腳本。
+這是一個使用 DrissionPage 自動進行網路認證的 Python 腳本。
 
 ## 功能
 
@@ -12,17 +12,28 @@
 ## 安裝
 
 1. 確保已安裝 Python 3.6 或更高版本。
-2. 安裝所需的依賴:
+
+2. 建立並啟用虛擬環境：
+
+   ### Windows:
+   ```
+   python -m venv venv
+   venv\Scripts\activate
+   ```
+
+   ### macOS/Linux:
+   ```
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. 安裝所需的依賴:
 
    ```
-   pip install selenium webdriver_manager
+   pip install -r requirements.txt
    ```
 
-3. 下載與您的 Chrome 瀏覽器版本相匹配的 ChromeDriver，並將其放置在專案的 `chromedriver-win64` 資料夾中。配置
-
-   ```
-   https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
-   ```
+## 配置
 
 在專案根目錄建立一個 `settings.json` 檔案，包含以下內容:
 
@@ -42,7 +53,7 @@
 
 ## 使用
 
-執行以下指令啟動腳本:
+啟用虛擬環境後，執行以下指令啟動腳本:
 
 ```
 python main.py
@@ -50,11 +61,23 @@ python main.py
 
 腳本將按照設定的間隔時間自動檢查網路連接並在需要時進行認證。
 
+## 自動化啟動
+
+若要讓系統自動啟動腳本，可以更新 `AutoLoginAD.bat` 文件：
+
+```
+cd 您的專案路徑
+call venv\Scripts\activate
+python main.py
+pause
+```
+
 ## 注意事項
 
 - 請確保 `settings.json` 檔案中的資訊正確且安全。
-- 腳本使用 ChromeDriver，請確保已正確安裝並配置。
+- 腳本使用 DrissionPage，無需額外安裝 ChromeDriver。
 - 如遇到問題，請檢查控制台輸出的錯誤訊息。
+- 每次使用前請確保虛擬環境已啟用。
 
 ## 授權
 
